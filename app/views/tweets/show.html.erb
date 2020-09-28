@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>投稿内容</strong>
+  <%= @tweet.content %>
+</p>
 <p>
   <strong>Image:</strong>
-  <%= image_tag @post.image.url if @post.image? %>
+  <%= image_tag @tweet.image.url if @tweet.image? %>
 </p>
 
 <%= link_to 'Edit', edit_tweet_path(@tweet) %> |
