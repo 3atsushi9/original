@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: [:show, :edit, :update, :destroy]
+  before_action :require_user_logged_in
+  before_action :correct_user, only: [:destroy]
 
   # GET /tweets
   # GET /tweets.json
@@ -25,7 +26,7 @@ class TweetsController < ApplicationController
   # POST /tweets
   # POST /tweets.json
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = current_user.tweets.build(tweet_params)
 
     #respond_to do |format|
       if @tweet.save
@@ -57,20 +58,26 @@ class TweetsController < ApplicationController
   # DELETE /tweets/1.json
   def destroy
     @tweet.destroy
-    respond_to do |format|
-      format.html { redirect_to tweets_url }
-      format.json { head :no_content }
-    end
+      redirect_to tweets_path
+    #respond_to do |format|
+      #format.html { redirect_to tweets_url }
+      #format.json { head :no_content }
+    #end
   end
 
-  private
+    private
     # Use callbacks to share common setup or constraints between actions.
-    def set_tweet
-      @tweet = Tweet.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
     def tweet_params
       params.require(:tweet).permit(:image, :content)
     end
-end
+    
+    def correct_user
+      @tweet = current_user.tweets.find_by(id: params[:id])
+      unless @tweet
+        redirect_to root_url
+      end
+    end
+end    
+
