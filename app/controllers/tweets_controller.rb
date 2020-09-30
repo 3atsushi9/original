@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
   # GET /tweets.json
   def index
     @tweets = Tweet.all
+    @tweet = Tweet.new
   end
 
   # GET /tweets/1
@@ -26,15 +27,16 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
 
-    respond_to do |format|
+    #respond_to do |format|
       if @tweet.save
-        format.html { redirect_to @tweet }
-        format.json { render :show, status: :created, location: @tweet }
+        redirect_to tweets_path
+        #format.html { redirect_to @tweet }
+        #format.json { render :show, status: :created, location: @tweet }
       else
-        format.html { render :new }
-        format.json { render json: @tweet.errors, status: :unprocessable_entity }
+        redirect_to tweets_path
+        #format.html { render :new }
+        #format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # PATCH/PUT /tweets/1
