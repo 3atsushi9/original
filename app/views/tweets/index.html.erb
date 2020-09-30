@@ -1,21 +1,12 @@
+
+
 <% if logged_in? %>
-<style>
-  img {
-    width: 200px;
-  }
-</style>
-<p id="notice"><%= notice %></p>
 
 <%= render 'tweets/form', tweet: @tweet %>
-<table class="table">
-    <% @tweets.each do |tweet| %>
-      <tr>
-        <td><%= tweet.content %></td>
-        <td><%= image_tag tweet.image.url %></td>
-        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-</table>
+<hr>
+<div>
+  <%= render 'tweets/tweets', tweets: @tweets %>
+</div>
 
 <% else %>
   <%= render partial: 'sessions/new' %>
