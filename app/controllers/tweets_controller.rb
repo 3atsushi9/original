@@ -5,8 +5,8 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.all
-    @tweet = Tweet.new
+    @tweets = current_user.feed_tweets.order(id: :desc).page(params[:page])
+    @tweet = current_user.tweets.build
   end
 
   # GET /tweets/1
@@ -34,6 +34,7 @@ class TweetsController < ApplicationController
         #format.html { redirect_to @tweet }
         #format.json { render :show, status: :created, location: @tweet }
       else
+      @tweets = current_user.feed_tweets.order(id: :desc).page(params[:page])
         redirect_to tweets_path
         #format.html { render :new }
         #format.json { render json: @tweet.errors, status: :unprocessable_entity }
