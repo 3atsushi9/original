@@ -12,12 +12,16 @@
           <p class="mb-0"><%= tweet.content %></p>
           <p class="mb-0"><%= image_tag tweet.image.url %></p>
         </div>
-        <div>
-          <% if current_user == tweet.user %>
-            <%= link_to "Delete", tweet, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
+        <div class="row">
+          <div class="col-md-3">
+            <% if current_user == tweet.user %>
+              <%= link_to "Delete", tweet, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <% end %>
+          </div>
+          <div class="col-md-3">
+            <%= render 'favorites/favorite_button', tweet: tweet %>
+          </div>
         </div>
-      </div>
     </li>
   <% end %>
   <%= paginate tweets %>
