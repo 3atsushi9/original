@@ -1,7 +1,7 @@
 <style>
-  textarea {
-  resize: none;
-}
+  .form-group textarea {
+    background-color: rgb(21, 32, 43);
+  }
 </style>
 
 <%= form_with(model: tweet, local: true) do |form| %>
@@ -16,15 +16,15 @@
       </ul>
     </div>
   <% end %>
-  
+    
   　<div class="container" style="text-align: center; height: 200px;">
-      <div class="form-gropup">
-        <%= form.text_area :content, class: 'form-control' %>
+      <div class="form-group">
+        <%= form.text_area :content, class: 'form-control', rows: 6, placeholder: "Hello!" %>
       </div>
     
       <div>
         <%= form.file_field :image %>
-        <%= form.submit 'Tweet' %>
+        <%= form.submit 'Tweet', class: 'btn btn-primary' %>
       </div>
-    </div>
+    </div><hr color="white"><hr color="white">
 <% end %>
