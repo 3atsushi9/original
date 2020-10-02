@@ -1,10 +1,10 @@
-<div class="card" style="height: 300px;">
+<div class="container" style="color: white; height: 300px;">
   <div class="row">
     <div class="col-3">
       <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 300 }) %>" alt="">
     </div>
     <div class="col-9">
-      <h1 class="card-title" style="color: black; text-align: center;"><%= @user.name %></h1>
+      <h1 style="color: white; text-align: center; margin-top: 50px;"><%= @user.name %></h1>
     </div>
   </div>
   <a href="<%= followings_user_path(@user) %>"> Followings  <span class="badge badge-secondary"><%= @count_followings %></span></a>

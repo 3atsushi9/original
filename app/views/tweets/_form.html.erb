@@ -1,3 +1,9 @@
+<style>
+  textarea {
+  resize: none;
+}
+</style>
+
 <%= form_with(model: tweet, local: true) do |form| %>
   <% if tweet.errors.any? %>
     <div id="error_explanation">
@@ -11,17 +17,14 @@
     </div>
   <% end %>
   
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  　<div class="container" style="text-align: center; height: 200px;">
+      <div class="form-gropup">
+        <%= form.text_area :content, class: 'form-control' %>
+      </div>
+    
+      <div>
+        <%= form.file_field :image %>
+        <%= form.submit 'Tweet' %>
+      </div>
+    </div>
 <% end %>
