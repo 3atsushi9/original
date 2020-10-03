@@ -6,11 +6,11 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   
-  has_many :tweets
-  has_many :relationships
-  has_many :followings, through: :relationships, source: :follow
+  has_many :tweets, dependent: :destroy
+  has_many :relationships, dependent: :destroy
+  has_many :followings, through: :relationships, source: :follow, dependent: :destroy
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
-  has_many :followers, through: :reverses_of_relationship, source: :user
+  has_many :followers, through: :reverses_of_relationship, source: :user, dependent: :destroy
   has_many :favorites
   has_many :favoritings, through: :favorites, source: :tweet
   

@@ -27,6 +27,13 @@ class UsersController < ApplicationController
     end
   end
   
+  def destroy
+    @user = User.find(params[:id]) #特定のidを持つ情報を取得
+    @user.destroy
+    flash[:success] = '退会しました。'
+    redirect_to :root #削除に成功すればrootページに戻る
+  end
+  
   def followings
     @user = User.find(params[:id])
     @followings = @user.followings.page(params[:page])
