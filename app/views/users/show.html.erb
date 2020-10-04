@@ -6,7 +6,6 @@
     </div>
     <div class="col-9">
       <h1 style="color: white; text-align: center; margin-top: 50px;"><%= @user.name %></h1>
-      <%= link_to "退会する",user_path(current_user), method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm'  %>
     </div>
   </div>
   <a href="<%= followings_user_path(@user) %>"> Followings  <span class="badge badge-secondary"><%= @count_followings %></span></a>
