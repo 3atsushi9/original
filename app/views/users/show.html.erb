@@ -5,7 +5,7 @@
       <%= render 'relationships/follow_button', user: @user %>
     </div>
     <div class="col-9">
-      <h1 style="color: white; text-align: center; margin-top: 50px;"><%= @user.name %></h1>
+      <h1 style="color: white; text-align: center; margin-top: 100px;"><%= @user.name %></h1>
     </div>
   </div>
   <a href="<%= followings_user_path(@user) %>"> Followings  <span class="badge badge-secondary"><%= @count_followings %></span></a>

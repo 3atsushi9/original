@@ -1,4 +1,9 @@
-
+<style>
+  .tweet_image {
+    width: 1000px;
+    height: 1200px;
+  }
+</style>
 
 <ul class="list-unstyled">
   <% tweets.each do |tweet| %>
@@ -10,7 +15,7 @@
         </div>
         <div>
           <p class="mb-0"><%= tweet.content %></p>
-          <p class="mb-0"><%= image_tag tweet.image.url %></p>
+          <p class="mb-0"><%= image_tag tweet.image.url, class: "tweet_image" %></p>
         </div>
         <div class="container" style="text-align: center;">
           <div class="row">
