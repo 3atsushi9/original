@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: photo-twitter_production
   username: photo-twitter
   password: <%= ENV['PHOTO-TWITTER_DATABASE_PASSWORD'] %>
