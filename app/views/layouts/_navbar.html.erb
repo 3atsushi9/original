@@ -14,8 +14,8 @@
               <li class="dropdown-item"><%= link_to 'My profile', user_path(current_user) %></li>
               <li class="dropdown-item"><%= link_to 'Other users', users_path(current_user) %></li>
               <li class="dropdown-item"><%= link_to 'Logout', logout_path, method: :delete %></li>
-              <li class="dropdown-item"><%= link_to "Withdrawal", user_path(current_user), method: :delete, data: { confirm: "You sure?" } %></li>
 　　　　　　</ul>
+　　　　　　<li class="nav-item"><%= link_to "退会", user_path(current_user), method: :delete, data: { confirm: "You sure?" }, class: 'nav-link' %></li>
           </li>
         <% else %>    
           <li class="nav-item"><%= link_to 'Signup', signup_path, class: "nav-link" %></li>
