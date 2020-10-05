@@ -1,7 +1,15 @@
 <style>
   .tweet_image {
-    width: 1000px;
-    height: 1200px;
+    width: 500px;
+  }
+  
+  #wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .content {
+    margin: auto;
   }
 </style>
 
@@ -13,9 +21,13 @@
         <div>
           <%= link_to tweet.user.name, user_path(tweet.user) %> <span class="text-muted">posted at <%= tweet.created_at %></span>
         </div>
-        <div>
-          <p class="mb-0"><%= tweet.content %></p>
+        <div id="wrapper">
           <p class="mb-0"><%= image_tag tweet.image.url, class: "tweet_image" %></p>
+          
+          <div class="content">
+            <p class="mb-0"><%= tweet.content.gsub(/\r\n|\r|\n/, "<br>").html_safe %></p>
+          </div>
+          
         </div>
         <div class="container" style="text-align: center;">
           <div class="row">
