@@ -35,9 +35,9 @@ class TweetsController < ApplicationController
         #format.html { redirect_to @tweet }
         #format.json { render :show, status: :created, location: @tweet }
       else
-      @tweets = current_user.feed_tweets.order(id: :desc).page(params[:page])
-      　flash[:success] = 'ツイートを投稿できませんでした。'
-        redirect_to tweets_path
+        @tweets = current_user.feed_tweets.order(id: :desc).page(params[:page])
+        flash.now[:danger] = 'ツイートを投稿できませんでした。'
+        render 'tweets/index'
         #format.html { render :new }
         #format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end

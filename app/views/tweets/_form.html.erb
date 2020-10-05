@@ -5,26 +5,18 @@
 </style>
 
 <%= form_with(model: tweet, local: true) do |form| %>
-  <% if tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
-
-      <ul>
-      <% tweet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    
-  　<div class="container" style="text-align: center; height: 200px;">
+    <div class="container" style="height: 200px;">
       <div class="form-group">
         <%= form.text_area :content, class: 'form-control', rows: 6, placeholder: "Hello!" %>
       </div>
     
-      <div>
+      <div class="row">
+        <div class="offset-3 col-2">
         <%= form.file_field :image %>
+        </div>
+        <div class="col-5 offset-2">
         <%= form.submit 'Tweet', class: 'btn btn-primary' %>
+        </div>
       </div>
-    </div><hr color="white"><hr color="white">
+    </div><br><hr color="white"><hr color="white">
 <% end %>
