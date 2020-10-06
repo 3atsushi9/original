@@ -8,6 +8,11 @@
     justify-content: space-between;
   }
   
+  p.w-nomal {
+    width: 300px;
+    word-wrap: normal;
+  }
+  
   .content {
     margin: auto;
   }
@@ -25,7 +30,7 @@
           <p class="mb-0"><%= image_tag tweet.image.url, class: "tweet_image" %></p>
           
           <div class="content">
-            <p class="mb-0"><%= tweet.content.gsub(/\r\n|\r|\n/, "<br>").html_safe %></p>
+            <p class="w-nomal"><%= tweet.content.gsub(/\r\n|\r|\n/, "<br>").html_safe %></p>
           </div>
           
         </div>

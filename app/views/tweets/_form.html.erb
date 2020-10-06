@@ -5,6 +5,7 @@
 </style>
 
 <%= form_with(model: tweet, local: true) do |form| %>
+  <%= render 'layouts/error_messages', model: tweet %>
     <div class="container" style="height: 200px;">
       <div class="form-group">
         <%= form.text_area :content, class: 'form-control', rows: 6, placeholder: "Hello!" %>
